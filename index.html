@@ -2,21 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" width="device-width, initial-scale=1.0"/>
     <title>Paul's Auto Complete Search via Viki</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="viewport" width="device-width, initial-scale=1.0">
+    <meta name="author" content="Paul Cathey">
+    <meta name="description" content="Exploration of Viki API with an autocomplete search">
+
+    <script async src="search.js"></script>
   </head>
   <body>
     <h1>Search Viki in Style (Autocomplete style that is!):</h1>
-    <form
-      action=""
-      method="get"
-      role="search">
-      <input
-        type="search"
-        placeholder="Search Viki"
-        autofocus>
-      </input>
-    </form>
+    <div class="search-container">
+      <form
+        action=""
+        method="get"
+        role="search">
+        <label for="search">Search</label>
+        <input
+          type=search
+          placeholder="Search Viki"
+          id="search"
+          results=5
+          autofocus>
+        </input>
+      </form>
+    </div>
   </body>
 </html>
 
