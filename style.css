@@ -1,11 +1,22 @@
+html{
+  height: 100%;
+}
+
 body{
   font-family: sans-serif;
   align-items: center;
-  color: #053b78;
+  height: 90%;
+
+  background: rgb(50, 60, 150); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgb(50,60,150), rgb(55,123,132)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgb(50,60,150), rgb(55,123,132)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(50,60,150), rgb(55,123,132)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgb(50,60,150), rgb(55,123,132)); /* Standard syntax */
 }
 
 h1{
-  font-size: 4em;
+  font-size: 3em;
+  padding-left: 5%;
 }
 
 a, a:visited {
@@ -16,13 +27,30 @@ a, a:visited {
 }
 
 label {
-  display: block;
+  display: none;
+}
+
+input {
+  border: white solid 1px;
+  border-radius: 3px;
+  font-size: 16px;
+  height: 35px;
+  width: 275px;
+  padding-left: 15px;
+  /*width: 40%;
+  height: 2em;
+  padding-left: .5em;
+  font-size: 17px;*/
 }
 
 .no-results {
   display: none;
   font-style: italic;
   opacity: 0.5;
+  padding-left: 1.5em;
+  margin-top: 5px;
+  color: white;
+  font-size: 1.5em;
 }
 
 .search-container {
@@ -37,6 +65,7 @@ label {
   display: none;
   border: 1px solid #053b78;
   border-radius: 2px;
+  background-color: white;
 }
 
 .result-item{
@@ -52,4 +81,28 @@ label {
   width: 100px;
   height: 75px;
   float: left;
+}
+
+.type-img {
+  height: 17px;
+  width: 23px;
+  margin-right: 5px;
+}
+
+.spinner {
+  display: none;
+  height: 1em;
+  animation-name: spin;
+  animation-duration: 1500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
 }
