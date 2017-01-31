@@ -22,10 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
   //send request on input change after 500ms
   inputEl.addEventListener("input", () => {
     if(inputEl.value.length > 1){
+      let query = inputEl.value;
       delay(() => {
-        fetchResults(inputEl.value, xhr);
-      }, 500 );
+        fetchResults(query);
+      }, 300 );
     } else {
+      xhr.abort();
       clearResults();
     }
   });
@@ -61,10 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
     var time = Date.now();
     var url = `https://api.viki.io/v4/search.json?per_page=5&app=100634a&with_people=true&c=${query}&t=${Date.now()}`;
     xhr.open('GET', url);
-    xhr.send();
+
+    //ensure delay does not fire request after clearing input
+    if(inputEl.value.length > 1){
+      xhr.send();
+    }
   }
 
-  //timer to wait for user to stop typing for N ms before firing AJAX
+  //timer to wait for user to stop typing for n ms before firing AJAX
   var delay = (function(){
     var timer = 0;
     return function(callback, ms){

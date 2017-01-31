@@ -21,6 +21,8 @@ label {
 
 .no-results {
   display: none;
+  font-style: italic;
+  opacity: 0.5;
 }
 
 .search-container {
