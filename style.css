@@ -1,13 +1,53 @@
-.results-container {
-  display: flex;
-  flex-direction: column;
-  width: 150px;
-  height: 50vh;
-  overflow-y: scroll;
+body{
+  font-family: sans-serif;
+  align-items: center;
+  color: #053b78;
 }
 
-.result
+h1{
+  font-size: 4em;
+}
+
+a, a:visited {
+  font-size: 1.3em;
+  text-decoration: none;
+  color: #053b78;
+  width: 100%;
+}
+
+label {
+  display: block;
+}
+
+.no-results {
+  display: none;
+}
+
+.search-container {
+  margin-left: 30%;
+}
+
+.results-list {
+  height: 50vh;
+  min-width: 320px;
+  max-width: 515px;
+  overflow-y: scroll;
+  display: none;
+  border: 1px solid #053b78;
+  border-radius: 2px;
+}
+
+.result-item{
+  display: flex;
+  height: 75px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  border-bottom: 1px solid #053b78;
+}
 
 .result-img {
-
+  margin-right: 3px;
+  width: 100px;
+  height: 75px;
+  float: left;
 }

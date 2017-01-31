@@ -1,21 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
   var xhr = new XMLHttpRequest();
-  var input = document.getElementById("search");
-  var resultsList = document.getElementsByClassName("results-list")[0];
+  var inputEl = document.getElementById("search");
+  var resultsListEl = document.getElementsByClassName("results-list")[0];
+  var noResultsEl = document.getElementsByClassName("no-results")[0];
 
   xhr.addEventListener("readystatechange", () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      populateResults(JSON.parse(xhr.responseText));
+      clearResults();
+      var dataJSON = JSON.parse(xhr.responseText);
+      if(dataJSON.length > 0){
+        populateResults(dataJSON);
+      } else {
+        noResultsEl.style.display = "block";
+      }
     } else if(xhr.readyState === 4 && xhr.status === 400) {
       clearResults();
+      noResultsEl.style.display = "block";
     }
   });
 
   //send request on input change after 500ms
-  input.addEventListener("input", () => {
-    if(input.value.length > 1){
+  inputEl.addEventListener("input", () => {
+    if(inputEl.value.length > 1){
       delay(() => {
-        fetchResults(input.value, xhr);
+        fetchResults(inputEl.value, xhr);
       }, 500 );
     } else {
       clearResults();
@@ -23,17 +31,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function populateResults(data){
+    var vikiUrl = "https://viki.com/";
+    resultsListEl.style.display = "block";
     data.forEach(item => {
       var resultItem = document.createElement("div");
       resultItem.className = "result-item";
-      resultItem.innerHTML = `<img src=${item.i} class="result-img"/>`;
-      resultsList.appendChild(resultItem);
+      resultItem.innerHTML = `
+
+      <a href=${vikiUrl + item.u.w}>
+        <img src=${item.i} class="result-img"/>
+        ${item.tt} [${item.t}]
+      </a>
+      <div>
+      `;
+
+      resultsListEl.appendChild(resultItem);
     });
   }
 
   function clearResults(){
-    while (resultsList.firstChild) {
-      resultsList.removeChild(resultsList.firstChild);
+    noResultsEl.style.display = "none";
+    resultsListEl.style.display = "none";
+    while (resultsListEl.firstChild) {
+        resultsListEl.removeChild(resultsListEl.firstChild);
     }
   }
 
