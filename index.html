@@ -10,15 +10,11 @@
     <meta name="author" content="Paul Cathey">
     <meta name="description" content="Exploration of Viki API with an autocomplete search">
 
-    <script async src="search.js"></script>
+    <script src="search.js"></script>
   </head>
   <body>
     <h1>Search Viki in Style (Autocomplete style that is!):</h1>
     <div class="search-container">
-      <form
-        action=""
-        method="get"
-        role="search">
         <label for="search">Search</label>
         <input
           type=search
@@ -27,7 +23,10 @@
           results=5
           autofocus>
         </input>
-      </form>
+    </div>
+    <div class="results-container"/>
+      <div class="results-list">
+      </div>
     </div>
   </body>
 </html>
